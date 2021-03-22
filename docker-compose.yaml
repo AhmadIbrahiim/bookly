@@ -1,0 +1,14 @@
+version: "2"
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      # We'll mount the 'postgres-data' volume into the location Postgres stores it's data:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+volumes:
+  # We'll define a volume that will store the data from the postgres databases:
+  postgres-data:
