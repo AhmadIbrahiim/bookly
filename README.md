@@ -17,6 +17,7 @@ rails db:migrate
 ## Showcase
 ![Bookly (1)](https://user-images.githubusercontent.com/17949497/112470541-747c7100-8d73-11eb-8ac3-0b37fb9f4f97.gif)
 https://user-images.githubusercontent.com/17949497/112470573-7fcf9c80-8d73-11eb-8de4-1ad38f8929c3.mp4
+![image](https://user-images.githubusercontent.com/17949497/112482629-f030ea80-8d80-11eb-9a29-14f5e776a993.png)
 
 
 
