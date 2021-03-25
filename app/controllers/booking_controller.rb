@@ -23,4 +23,8 @@ class BookingController < ApplicationController
     @booking = PassengerBooking.where(pnr: params[:pnr]).first
     @seats = @flight.aero_plan.seat_configurations.order('seat_type desc')
   end
+  def confirm_seat
+    PassengerBooking.where(pnr: params[:pnr]).first&.update(row_number: params[:row],seat_number: params[:seat])
+    render plain: 'Seat created.', status: 200
+  end
 end

@@ -76,7 +76,7 @@
                       </tr>
                       <tr>
                         <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> Flight Booking Cost </td>
-                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> <%=params[:total_price]%> </td>
+                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> $<%=params[:total_price]%> </td>
                       </tr>
                       <tr>
                         <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;"> Passenger Name </td>
@@ -95,7 +95,7 @@
             </tbody>
           </table>
           <br><br>
-           <a class="btn btn-success btn-lg " name="commit" value="Confirm" type="submit">Book your seat</a>
+           <a class="btn btn-success btn-lg " name="commit" href=<%="/booking/choose_your_seat?pnr="+@flight_booking.pnr %> type="submit">Book your seat</a>
         </div>
       </div>
     <% end %>
