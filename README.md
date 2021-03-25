@@ -14,7 +14,10 @@ rails db:create
 rails db:migrate
 ```
 ## Showcase
-![Bookly](https://user-images.githubusercontent.com/17949497/112468760-59106680-8d71-11eb-89e1-b19e0bd0c110.gif)
+![Bookly (1)](https://user-images.githubusercontent.com/17949497/112470541-747c7100-8d73-11eb-8ac3-0b37fb9f4f97.gif)
+https://user-images.githubusercontent.com/17949497/112470573-7fcf9c80-8d73-11eb-8de4-1ad38f8929c3.mp4
+
+
 
 ## What you can do ?
 - Add Aeroplan
