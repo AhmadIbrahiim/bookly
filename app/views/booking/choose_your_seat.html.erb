@@ -29,7 +29,8 @@
 </div>
 
 <%if @booking.row_number.present? && @booking.seat_number.present?%>
-<h1>Your seat already booked. You can't change it at the moment, Please contact support team for further help.</h1>
+<div class="alert alert-danger" style="font-size: 22px" role="alert">
+Your seat already booked. You can't change it at the moment, Please contact support team for further help.</div>
 <%end%>
 <script>
   var NumberOfBooking = 1
@@ -54,7 +55,9 @@
   $("#confirm-btn").click(function(){
     isConfirmed = confirm("Are you sure you want to confirm booking?")
     $.get(`/booking/confirm?pnr=<%=@booking.pnr%>&row=${selectedRow}&seat=${selectedSeat}`).then(x=>{
-      $('.plane').html('')
+      $('.plane').html(`<div class="alert alert-primary" role="alert">
+  Your seat has been booked successfuly.
+</div>`)
     })
   })
 </script>

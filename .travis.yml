@@ -1,10 +1,16 @@
 language: ruby
 cache:
 - bundler
+services:
+  - postgresql
+  - memcached
+addons:
+    postgresql: '9.6'
+
 before_script:
+- psql -c 'create database bookly_development;' -U postgres
 - bundle exec rake db:create
 - bundle exec rake db:migrate
-- bundle exec rake assets:precompile
 deploy:
   provider: heroku
   api_key:
