@@ -269,7 +269,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bootsnap (>= 1.4.2)
+  bootsnap
   bootstrap-sass
   byebug
   capybara (>= 2.15)
