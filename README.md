@@ -14,7 +14,7 @@ rails db:create
 rails db:migrate
 ```
 
-https://user-images.githubusercontent.com/17949497/112468239-adffad00-8d70-11eb-8755-fa73d60a0326.mp4
+![Bookly](https://user-images.githubusercontent.com/17949497/112468760-59106680-8d71-11eb-89e1-b19e0bd0c110.gif)
 
 
 
