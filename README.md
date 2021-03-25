@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/AhmadIbrahiim/bookly.svg?branch=main)](https://travis-ci.com/AhmadIbrahiim/bookly)
 # Bookly
 
 Simple booking app built on top of Ruby on Rails and PostgreSQL
