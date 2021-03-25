@@ -1,5 +1,6 @@
 class FlightsController < ApplicationController
   def index
+
     @flight = Flight.new
     @airports = AirPort.all.map { |airport| [airport.city, airport.id] }
     @dates = Flight.order("date asc").all.map { |flight| [flight.date.strftime("%d/%m/%Y")] }.uniq
