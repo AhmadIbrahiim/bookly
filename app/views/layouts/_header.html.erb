@@ -1,12 +1,16 @@
-<div class="row">
-  <div class="large-3 columns">
-    <h1><img src="https://cf.bstatic.com/static/img/bcom_logo_blue_bg/f12f834e849b2a7f752a14b2598a6ddfeda1e713.svg" /></h1>
-  </div>
-  <div class="large-9 columns">
-    <ul class="button-group">
-        <%= link_to "Home", root_path, class: "button" %>
-        <a class="button" href="https://github.com/">Source Code</a>
+<nav class="navbar navbar-default topnav" role="navigation">
+  <div class="container topnav">
+    <div class="navbar-header">
+      <%= link_to root_url, id: 'logo', class: 'navbar-brand topnav' do %>
+          <i class="fa fa-ticket"></i>
+         Bookly
+      <% end %>
 
-    </ul>
+      <a id="logo" class="navbar-brand topnav" href="http://localhost:3000/">
+          <i class="fa fa-search"></i>
+          Choose Seat
+        </a>
+    </div>
   </div>
-</div>
+
+</nav>

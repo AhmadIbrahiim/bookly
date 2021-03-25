@@ -1,0 +1,47 @@
+<% require 'booking_helper' %>
+
+<div class="plane">
+  <div class="cockpit">
+    <h1>Please select a seat</h1>
+  </div>
+  <div class="exit exit--front fuselage">
+  </div>
+  <% @seats.each do |cabin| %>
+    <ol class="cabin fuselage">
+      <% cabin.seats_in_rows.times do |row_number| %>
+        <li class="row row--1">
+          <ol class="seats" type=<%= row_number.to_s %>>
+        <% cabin.seats_in_rows.times do |index| %>
+            <li class="seat">
+              <input <%="disabled" if @booking.seat_type != cabin.seat_type %> <%="checked" if is_booked?(@flight.id,cabin.seat_type,row_number,index) %> type="checkbox" data-row=<%=row_number%> data-seat=<%=index%> id=<%= cabin.seat_type[0] + "" + row_number.to_s + "" + index.to_s %> />
+          <label for=<%= cabin.seat_type[0] + "" + row_number.to_s + "" + index.to_s %>><%= cabin.seat_type[0] + "" + row_number.to_s + "" + index.to_s %></label>
+        </li>
+      <% end %>
+    </ol>
+  </li>
+<% end %>
+</ol>
+<% end %>
+<div class="exit exit--back fuselage">
+</div>
+</div>
+<script>
+var NumberOfBooking = 1
+var selectedRow = null,selectedSeat=null
+
+$('input:checkbox').change(function(){
+    if($(this).is(':checked')&&NumberOfBooking==1) {
+      NumberOfBooking+=1;
+      selectedRow = $(this).data('row');
+      selectedSeat = $(this).data('seat')
+
+      console.log($(this).data('row'))
+      console.log($(this).data('seat'))
+    } else if ($(this).is(':checked') && NumberOfBooking !=1){
+      $(this).prop('checked', false)
+    }
+    else {
+      $(this).prop('checked', true)
+    }
+});
+</script>

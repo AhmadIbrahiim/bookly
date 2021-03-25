@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row">
+    <% if params[:commit] == "Order" %>
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your cart</span>
+          <span class="badge badge-secondary badge-pill">1</span>
+        </h4>
+        <ul class="list-group mb-3 sticky-top">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0"><%= "Flight No #{@flight_info.id}" %></h6>
+              <small class="text-muted"><%= "from #{@flight_info.departure_from.city} to #{@flight_info.arrive_to.city}" %></small>
+            </div>
+            <span class="text-muted">$<%= @total_price %></span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-success">
+              <h6 class="my-0">Promo code</h6>
+              <small>EXAMPLECODE</small>
+            </div>
+            <span class="text-success">-$0</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>$<%= @total_price %></strong>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Passenger(s) Infomration</h4>
+        <form class="needs-validation" >
+          <%= hidden_field_tag :flight_selected, params[:flight_selected] %>
+          <%= hidden_field_tag :flight_level, params[:flight_level] %>
+          <%= hidden_field_tag :total_price, @total_price %>
+          <% for x in 1..params[:passenger_count].to_i %>
+            <hr>
+            <h4 class="mb-8">Passenger(<%= x %>):</h4>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="name">Full name</label>
+                <input type="text" class="form-control" name="name" placeholder="Passenger full name" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" type="emai" placeholder="Passenger email address"  required>
+              </div>
+            </div>
+          <% end %>
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg btn-block" name="commit" value="Confirm" type="submit">Confirm Order</button>
+        </form>
+      </div>
+    <%else%>
+      <div class="col-md-10 col-md-offset-1 align-center" id="search-form">
+        <div class="px-4 py-5">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+            <tbody>
+              <tr>
+                <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;"> <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125" height="120" style="display: block; border: 0px;"><br>
+                  <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;"> Thank You For Your Order! </h2>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;">
+                  <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777; text-align: center"> Your order now confirmed and you can book your seat by clicking at the below button and choose your perfred location.</p>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" style="padding-top: 20px;">
+                  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tbody>
+                      <tr>
+                        <td width="75%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;"> Order Confirmation # </td>
+                        <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;"> <%=@flight_booking.id%> </td>
+                      </tr>
+                      <tr>
+                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> Flight Booking Cost </td>
+                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;"> <%=params[:total_price]%> </td>
+                      </tr>
+                      <tr>
+                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;"> Passenger Name </td>
+                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;"> <%=@flight_booking.passenger.name%> </td>
+                      </tr>
+                      <tr>
+                        <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;"> Flight PNR </td>
+                        <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;"> <%=@flight_booking.pnr%> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+                <td>
+              </tr>
+
+            </tbody>
+          </table>
+          <br><br>
+           <a class="btn btn-success btn-lg " name="commit" value="Confirm" type="submit">Book your seat</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

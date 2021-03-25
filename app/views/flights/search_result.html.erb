@@ -1,0 +1,44 @@
+
+  <%=@say_my_name%>
+
+<% if !@flights.nil? %>
+    <% if !@flights.empty? %>
+        <%= form_tag("/booking/checkout", {:method => :get}) do %>
+            <div class="row" id="flights-form">
+              <div class="col-md-8 col-md-offset-2" style="margin-top:100px;">
+                <table class="table table-striped table-bordered">
+                  <thead>
+                  <tr>
+                    <th></th>
+                    <th>Flight ID</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Passengers</th>
+                    <th>Departure</th>
+                    <th>Destination</th>
+                    <th>Level</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @flights.each do |f| %>
+                      <tr>
+                        <td><%= radio_button_tag(:flight_selected, f.id, checked: f) %></td>
+                        <td><%= f.id %></td>
+                        <td><%= f.date.strftime("%d/%m/%Y") %></td>
+                        <td><%= f.date.strftime("%H:%m") %></td>
+                        <td><%= params[:flight][:passengers] %></td>
+                        <td><%= f.departure_from.code %></td>
+                        <td><%= f.arrive_to.code %></td>
+                        <% flight_level = Flight.last.aero_plan.seat_configurations.map { |seats| [seats.seat_type,seats.seat_type]}%>
+                        <td><%=select_tag(:flight_level,options_for_select(flight_level),{:class => 'form-control'})%> </td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+                <%= hidden_field_tag :passenger_count, params[:flight][:passengers] %>
+                <%= submit_tag("Order", class: "form-control btn btn-primary btn-block search-btn", id: 'order-btn') %>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>

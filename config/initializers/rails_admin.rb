@@ -23,6 +23,7 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
 
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
@@ -37,5 +38,48 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
+  end
+
+  config.model AeroPlan do
+    create do
+      field :name
+      field :aero_plans_seat_configurations
+    end
+    edit do
+      field :name
+      field :aero_plans_seat_configurations
+    end
+    list do
+      field :id
+      field :name
+      field :created_at
+      field :aero_plans_seat_configurations
+    end
+  end
+
+  config.model Flight do
+    create do
+    end
+  end
+
+
+
+  config.model SeatConfiguration do
+    create do
+      field :seat_type
+      field :number_of_rows
+      field :seats_in_rows
+    end
+    edit do
+      field :seat_type
+      field :number_of_rows
+      field :seats_in_rows
+    end
+    list do
+      field :id
+      field :seat_type
+      field :number_of_rows
+      field :seats_in_rows
+    end
   end
 end
